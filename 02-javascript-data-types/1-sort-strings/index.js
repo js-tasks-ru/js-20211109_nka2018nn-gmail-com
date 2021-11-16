@@ -8,10 +8,7 @@ export function sortStrings(arr, param = 'asc') {
   const arrayCopy = [...arr];
   return arrayCopy.sort((a, b) => {
     if (param === 'asc') {
-      if (a.toLowerCase() === b.toLowerCase() && a !== b) {
-        return b.localeCompare(a, ['ru', 'en']);
-      }
-      return a.localeCompare(b, ['ru', 'en']);
+      return a.localeCompare(b, ['ru', 'en'], { caseFirst: 'upper' });
     }
     if (param === 'desc') {
       return b.localeCompare(a, ['ru', 'en']);

@@ -8,9 +8,11 @@ export const omit = (obj, ...fields) => {
   const filteredObject = {};
   const fieldsToOmit = [...fields];
 
-  const filteredObjectFields = Object.keys(obj);
-  const fieldsToInclude = filteredObjectFields.filter(key => !fieldsToOmit.includes(key));
-  fieldsToInclude.forEach(field => filteredObject[field] = obj[field]);
+  for (const key in obj) {
+    if (!fieldsToOmit.includes(key)) {
+      filteredObject[key] = obj[key];
+    }
+  }
 
   return filteredObject;
 };
